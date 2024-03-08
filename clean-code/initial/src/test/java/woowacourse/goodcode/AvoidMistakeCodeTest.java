@@ -72,10 +72,11 @@ public class AvoidMistakeCodeTest {
             }
         }
 
-        final var position = new Position();
+        final var neoPosition = new Position();
+        final var brownPosition = new Position();
 
-        final var neoCar = new Car("네오", position);
-        final var brownCar = new Car("브라운", position);
+        final var neoCar = new Car("네오", neoPosition);
+        final var brownCar = new Car("브라운", brownPosition);
 
         neoCar.forward();
 
@@ -101,8 +102,8 @@ public class AvoidMistakeCodeTest {
                 this(0);
             }
 
-            public Position increase() {
-                return new Position(value + 1);
+            public Position increase(final int distance) {
+                return new Position(distance);
             }
         }
 
@@ -110,8 +111,8 @@ public class AvoidMistakeCodeTest {
                 String name,
                 Position position
         ) {
-            public Car forward() {
-                return new Car(name, position.increase());
+            public Car forward(final int distance) {
+                return new Car(name, position.increase(distance));
             }
         }
 
@@ -121,9 +122,9 @@ public class AvoidMistakeCodeTest {
         final var brownCar = new Car("브라운", position);
 
         // Note: Car 객체가 불변 객체가 되면서 위치가 이동될 때 마다 새로운 객체가 생성된다.
-        neoCar = neoCar.forward();
+        neoCar = neoCar.forward(10);
 
-        assertThat(neoCar.position()).isEqualTo(new Position(1));
+        assertThat(neoCar.position()).isEqualTo(new Position(10));
         assertThat(brownCar.position()).isEqualTo(new Position(0));
     }
 
@@ -374,7 +375,7 @@ public class AvoidMistakeCodeTest {
             }
 
             List<Car> getParticipants() {
-                return participants;
+                return List.copyOf(participants);
             }
         }
 

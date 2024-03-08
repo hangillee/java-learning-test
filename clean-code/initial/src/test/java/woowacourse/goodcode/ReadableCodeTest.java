@@ -36,21 +36,21 @@ public class ReadableCodeTest {
     void 어떻게_의도를_전달할_수_있을까() {
         // TODO: 자동차를 움직이고 위치가 변경된다는 의도를 드러낼 수 있는 코드를 작성해보세요.
         class Car {
-            private int p = 0;
+            private int position = 0;
 
             void forward() {
-                if (p > 5) {
+                if (position > 5) {
                     throw new IllegalStateException("최대 5까지만 움직일 수 있습니다.");
                 }
 
-                p += 1;
+                position += 1;
             }
         }
 
         final var car = new Car();
 
         car.forward();
-        assertThat(car.p).isEqualTo(1);
+        assertThat(car.position).isEqualTo(1);
     }
 
     /**
@@ -179,29 +179,27 @@ public class ReadableCodeTest {
             private String name;
             private int position;
 
-            public String getName()
-            {
-                return name;
+            void forward()  {
+                position += 1;
             }
 
-            void Forward()  {
-                position += 1;
+            void backward() {
+                position -= 1;
+            }
+
+            public String name() {
+                return name;
             }
 
             public int position() {
                 return position;
-            }
-
-            void minusPosition()
-            {
-                position--;
             }
         }
         // @formatter:on
 
         final var car = new Car();
 
-        car.Forward();
+        car.forward();
         assertThat(car.position()).isEqualTo(1);
     }
 
@@ -255,31 +253,12 @@ public class ReadableCodeTest {
                     final List<Integer> numbers,
                     final List<Integer> winningNumbers
             ) {
-                for (int number : numbers) {
-                    if (number < 1 || number > 45) {
-                        throw new IllegalArgumentException("로또 번호는 1부터 45까지의 숫자여야 합니다.");
-                    }
-                }
-                for (int winningNumber : winningNumbers) {
-                    if (winningNumber < 1 || winningNumber > 45) {
-                        throw new IllegalArgumentException("로또 번호는 1부터 45까지의 숫자여야 합니다.");
-                    }
-                }
-                if (new HashSet<>(numbers).size() != 6) {
-                    throw new IllegalArgumentException("로또 번호는 6개여야 합니다.");
-                }
-                if (new HashSet<>(winningNumbers).size() != 6) {
-                    throw new IllegalArgumentException("로또 번호는 6개여야 합니다.");
-                }
+                validateLottoNumbers(numbers);
+                validateLottoNumbers(winningNumbers);
+                validateLottoNumbersSize(numbers);
+                validateLottoNumbersSize(winningNumbers);
 
-                int count = 0;
-                for (int number : numbers) {
-                    for (int winningNumber : winningNumbers) {
-                        if (number == winningNumber) {
-                            count++;
-                        }
-                    }
-                }
+                int count = getCount(numbers, winningNumbers);
 
                 return switch (count) {
                     case 6 -> 1_000_000_000;
@@ -288,6 +267,32 @@ public class ReadableCodeTest {
                     case 3 -> 5_000;
                     default -> 0;
                 };
+            }
+
+            private static int getCount(List<Integer> numbers, List<Integer> winningNumbers) {
+                int count = 0;
+                for (int number : numbers) {
+                    for (int winningNumber : winningNumbers) {
+                        if (number == winningNumber) {
+                            count++;
+                        }
+                    }
+                }
+                return count;
+            }
+
+            private void validateLottoNumbers(final List<Integer> numbers) {
+                for (int number : numbers) {
+                    if (number < 1 || number > 45) {
+                        throw new IllegalArgumentException("로또 번호는 1부터 45까지의 숫자여야 합니다.");
+                    }
+                }
+            }
+
+            private void validateLottoNumbersSize(final List<Integer> numbers) {
+                if (new HashSet<>(numbers).size() != 6) {
+                    throw new IllegalArgumentException("로또 번호는 6개여야 합니다.");
+                }
             }
         }
 
@@ -687,12 +692,8 @@ public class ReadableCodeTest {
 
             public Menu(final List<String> menuItems) {
                 // TODO: Collection API를 사용하여 코드를 재사용하고 의도를 파악하기 쉽게 만들어보세요.
-                for (int i = 0; i < menuItems.size(); i++) {
-                    for (int j = 0; j < i; j++) {
-                        if (menuItems.get(i).equals(menuItems.get(j))) {
-                            throw new IllegalArgumentException("중복된 메뉴가 있습니다.");
-                        }
-                    }
+                if(menuItems.size() != menuItems.stream().distinct().count()) {
+                    throw new IllegalArgumentException("중복된 메뉴가 있습니다.");
                 }
 
                 this.menuItems = menuItems;
@@ -772,12 +773,7 @@ public class ReadableCodeTest {
 
             public int getPrice(final String menuName) {
                 // TODO: API에 매몰되어 과하게 사용하여 생긴 코드입니다. 간단한 코드로 리팩토링해보세요.
-                return menu.entrySet()
-                        .stream()
-                        .filter(e -> e.getKey().equals(menuName))
-                        .map(Map.Entry::getValue)
-                        .findFirst()
-                        .orElse(0);
+                return menu.get(menuName);
             }
         }
         final var menu = new Menu(Map.of(

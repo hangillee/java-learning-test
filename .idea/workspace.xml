@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3c790837-1e96-496d-b7c5-42778307cee8" name="Changes" comment="feat(clean-code): 좋은 예외 처리 학습 테스트 추가">
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-language/complete/src/test/java/woowacourse/FunctionalProgrammingTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-language/complete/src/test/java/woowacourse/FunctionalProgrammingTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean-code/initial/src/test/java/woowacourse/ExceptionHandlingTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/clean-code/initial/src/test/java/woowacourse/ExceptionHandlingTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean-code/initial/src/test/java/woowacourse/goodcode/AvoidMistakeCodeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/clean-code/initial/src/test/java/woowacourse/goodcode/AvoidMistakeCodeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean-code/initial/src/test/java/woowacourse/goodcode/PredictableCodeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/clean-code/initial/src/test/java/woowacourse/goodcode/PredictableCodeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean-code/initial/src/test/java/woowacourse/goodcode/ReadableCodeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/clean-code/initial/src/test/java/woowacourse/goodcode/ReadableCodeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,144 +55,146 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DELOMBOK_PRE_COMMIT&quot;: &quot;false&quot;,
-    &quot;Gradle.AssertJTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.FunctionalProgrammingTest (1).executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.FunctionalProgrammingTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.JUnit5Test.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;corretto-17&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/jaeyeonling/workspace/github/woowacourse/java-learning-test&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DELOMBOK_PRE_COMMIT": "false",
+    "Gradle.AssertJTest.executor": "Run",
+    "Gradle.FunctionalProgrammingTest (1).executor": "Run",
+    "Gradle.FunctionalProgrammingTest.executor": "Run",
+    "Gradle.JUnit5Test.executor": "Run",
+    "JUnit.AvoidMistakeCodeTest.객체_그래프가_깊을_때_문제를_해결하는_방법은_무엇일까.executor": "Run",
+    "JUnit.AvoidMistakeCodeTest.객체의_상태를_변경할_수_있는_위험을_방지하는_방법은_무엇일까.executor": "Run",
+    "JUnit.AvoidMistakeCodeTest.불변_객체를_사용할_때_성능상의_이슈를_해결하는_방법은_무엇일까.executor": "Run",
+    "JUnit.AvoidMistakeCodeTest.어떻게_같은_위치_객체를_사용할_때_발생할_수_있는_실수를_방지할_수_있을까.executor": "Run",
+    "JUnit.AvoidMistakeCodeTest.적정한_시점까지만_불변_객체를_사용한다.executor": "Run",
+    "JUnit.ExceptionHandlingTest$GoodExceptionHandling$UserTest.executor": "Run",
+    "JUnit.ExceptionHandlingTest$GoodExceptionHandling$UserTest.예외_처리를_강제하지_않는_코드를_어떻게_작성할_수_있을까.executor": "Run",
+    "JUnit.ExceptionHandlingTest$GoodExceptionHandling$UserTest.외부에서_쉽게_예외를_구분할_수_있도록_하는_방법은_없을까.executor": "Run",
+    "JUnit.ExceptionHandlingTest$GoodExceptionHandling$UserTest.유저_생성_시_여러_예외_상황이_발생할_수_있을_때_어떻게_예외_처리를_하는_것이_좋을까.executor": "Run",
+    "JUnit.ExceptionHandlingTest$GoodExceptionHandling$UserTest.유저_생성에_대해_더_많은_정보를_전달해야_한다면_어떻게_예외_처리를_하는_것이_좋을까.executor": "Run",
+    "JUnit.ExceptionHandlingTest$GoodExceptionHandling$UserTest.유저의_이름의_최대_길이가_5자로_제한되어_있을_때_예외_처리를_어떻게_하는_것이_좋을까.executor": "Run",
+    "JUnit.ExceptionHandlingTest$GoodExceptionHandling$UserTest.유저의_이름이_최대_길이가_5자로_제한되어_있다는_의도를_나타내는_테스트는_어떻게_작성할_수_있을까.executor": "Run",
+    "JUnit.ExceptionHandlingTest$SyntaxTest.상위_클래스의_예외를_먼저_처리하지_않으면_컴파일_에러가_발생한다.executor": "Run",
+    "JUnit.PredictableCodeTest.null을_사용하지_않고_의도를_전달하는_방법은_무엇일까.executor": "Run",
+    "JUnit.PredictableCodeTest.어떻게_매번_값을_체크하지_않도록_할_수_있을까 (1).executor": "Run",
+    "JUnit.PredictableCodeTest.어떻게_매번_값을_체크하지_않도록_할_수_있을까.executor": "Run",
+    "JUnit.PredictableCodeTest.어떻게_새로운_열거형이_추가되었을_때_해당_명령을_처리하는_코드를_놓치지_않을_수_있을까.executor": "Run",
+    "JUnit.PredictableCodeTest.어떻게_참여자가_없는_상황을_처리하는_코드를_중복하지_않고_처리할_수_있을까.executor": "Run",
+    "JUnit.PredictableCodeTest.자동차_이동과_조회를_같이_할_경우_어떠한_문제가_있을지_고민_후_개선한다.executor": "Run",
+    "JUnit.PredictableCodeTest.자동차가_최대_위치에서_움직이지_않고_유지하는_코드는_어떠한_문제가_있을지_고민_후_개선한다.executor": "Run",
+    "JUnit.PredictableCodeTest.파워가_4보다_작을_때_무시하는_코드는_어떠한_문제가_있을지_고민_후_개선한다.executor": "Run",
+    "JUnit.ReadableCodeTest.API에_매몰되어_과하게_사용하면_생길_수_있는_문제.executor": "Run",
+    "JUnit.ReadableCodeTest.어떻게_추상화하여_메서드를_작게_만들_수_있을까.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "jdk.selected.JAVA_MODULE": "corretto-17",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/jaeyeonling/workspace/github/woowacourse/java-learning-test",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.FunctionalProgrammingTest (1)">
-    <configuration name="AssertJTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":java-test:initial:test" />
-            <option value="--tests" />
-            <option value="&quot;woowacourse.AssertJTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
+  <component name="RunManager" selected="JUnit.ExceptionHandlingTest$GoodExceptionHandling$UserTest.외부에서_쉽게_예외를_구분할_수_있도록_하는_방법은_없을까">
+    <configuration name="ExceptionHandlingTest$GoodExceptionHandling$UserTest.유저의_이름이_최대_길이가_5자로_제한되어_있다는_의도를_나타내는_테스트는_어떻게_작성할_수_있을까" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="java-learning-test.clean-code.initial.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="woowacourse.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="woowacourse.ExceptionHandlingTest.GoodExceptionHandling" />
+      <option name="MAIN_CLASS_NAME" value="woowacourse.ExceptionHandlingTest$GoodExceptionHandling$UserTest" />
+      <option name="METHOD_NAME" value="유저의_이름이_최대_길이가_5자로_제한되어_있다는_의도를_나타내는_테스트는_어떻게_작성할_수_있을까" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration name="FunctionalProgrammingTest (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":java-language:initial:test" />
-            <option value="--tests" />
-            <option value="&quot;woowacourse.FunctionalProgrammingTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
+    <configuration name="ExceptionHandlingTest$GoodExceptionHandling$UserTest.예외_처리를_강제하지_않는_코드를_어떻게_작성할_수_있을까" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="java-learning-test.clean-code.initial.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="woowacourse.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="woowacourse.ExceptionHandlingTest.GoodExceptionHandling" />
+      <option name="MAIN_CLASS_NAME" value="woowacourse.ExceptionHandlingTest$GoodExceptionHandling$UserTest" />
+      <option name="METHOD_NAME" value="예외_처리를_강제하지_않는_코드를_어떻게_작성할_수_있을까" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration name="FunctionalProgrammingTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":java-language:complete:test" />
-            <option value="--tests" />
-            <option value="&quot;woowacourse.FunctionalProgrammingTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
+    <configuration name="ExceptionHandlingTest$GoodExceptionHandling$UserTest.외부에서_쉽게_예외를_구분할_수_있도록_하는_방법은_없을까" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="java-learning-test.clean-code.initial.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="woowacourse.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="woowacourse.ExceptionHandlingTest.GoodExceptionHandling" />
+      <option name="MAIN_CLASS_NAME" value="woowacourse.ExceptionHandlingTest$GoodExceptionHandling$UserTest" />
+      <option name="METHOD_NAME" value="외부에서_쉽게_예외를_구분할_수_있도록_하는_방법은_없을까" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration name="JUnit5Test" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":java-test:initial:test" />
-            <option value="--tests" />
-            <option value="&quot;woowacourse.JUnit5Test&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
+    <configuration name="ExceptionHandlingTest$GoodExceptionHandling$UserTest.유저_생성에_대해_더_많은_정보를_전달해야_한다면_어떻게_예외_처리를_하는_것이_좋을까" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="java-learning-test.clean-code.initial.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="woowacourse.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="woowacourse.ExceptionHandlingTest.GoodExceptionHandling" />
+      <option name="MAIN_CLASS_NAME" value="woowacourse.ExceptionHandlingTest$GoodExceptionHandling$UserTest" />
+      <option name="METHOD_NAME" value="유저_생성에_대해_더_많은_정보를_전달해야_한다면_어떻게_예외_처리를_하는_것이_좋을까" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExceptionHandlingTest$GoodExceptionHandling$UserTest.유저_생성_시_여러_예외_상황이_발생할_수_있을_때_어떻게_예외_처리를_하는_것이_좋을까" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="java-learning-test.clean-code.initial.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="woowacourse.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="woowacourse.ExceptionHandlingTest.GoodExceptionHandling" />
+      <option name="MAIN_CLASS_NAME" value="woowacourse.ExceptionHandlingTest$GoodExceptionHandling$UserTest" />
+      <option name="METHOD_NAME" value="유저_생성_시_여러_예외_상황이_발생할_수_있을_때_어떻게_예외_처리를_하는_것이_좋을까" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.FunctionalProgrammingTest (1)" />
-        <item itemvalue="Gradle.FunctionalProgrammingTest" />
-        <item itemvalue="Gradle.JUnit5Test" />
-        <item itemvalue="Gradle.AssertJTest" />
+        <item itemvalue="JUnit.ExceptionHandlingTest$GoodExceptionHandling$UserTest.외부에서_쉽게_예외를_구분할_수_있도록_하는_방법은_없을까" />
+        <item itemvalue="JUnit.ExceptionHandlingTest$GoodExceptionHandling$UserTest.유저_생성에_대해_더_많은_정보를_전달해야_한다면_어떻게_예외_처리를_하는_것이_좋을까" />
+        <item itemvalue="JUnit.ExceptionHandlingTest$GoodExceptionHandling$UserTest.유저_생성_시_여러_예외_상황이_발생할_수_있을_때_어떻게_예외_처리를_하는_것이_좋을까" />
+        <item itemvalue="JUnit.ExceptionHandlingTest$GoodExceptionHandling$UserTest.유저의_이름이_최대_길이가_5자로_제한되어_있다는_의도를_나타내는_테스트는_어떻게_작성할_수_있을까" />
+        <item itemvalue="JUnit.ExceptionHandlingTest$GoodExceptionHandling$UserTest.예외_처리를_강제하지_않는_코드를_어떻게_작성할_수_있을까" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="jdk-17.0.9-corretto-17.0.9-3183f394aec4-5f3ff201" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -201,6 +208,7 @@
       <workItem from="1706247607930" duration="808000" />
       <workItem from="1706833429500" duration="1762000" />
       <workItem from="1708315905074" duration="2078000" />
+      <workItem from="1708567429883" duration="15442000" />
     </task>
     <task id="LOCAL-00001" summary="feat(test): junit, assertj 학습 테스트 추가">
       <option name="closed" value="true" />

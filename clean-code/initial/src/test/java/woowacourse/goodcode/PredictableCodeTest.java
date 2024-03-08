@@ -12,6 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * 좋은 코드의 기준은 사람마다 다르지만 대부분의 사람들이 동의하는 몇 가지 기준이 있습니다.
@@ -33,8 +34,6 @@ public class PredictableCodeTest {
     void 어떻게_매번_값을_체크하지_않도록_할_수_있을까() {
         // TODO: 매번 -1을 체크하지 않고 참여자가 없다는 것을 명시적으로 표현할 수 있는 코드를 작성해보세요.
         class RacingGame {
-            private static final int NO_PARTICIPANT = -1;
-
             private final List<Car> participants;
 
             RacingGame() {
@@ -45,12 +44,15 @@ public class PredictableCodeTest {
                 this.participants = participants;
             }
 
-            int averagePosition() {
+            Integer averagePosition() {
                 // Note: 매직값은 버그를 유발할 수 있다.
-                return (int) participants.stream()
+                final OptionalDouble average =  participants.stream()
                         .mapToInt(Car::position)
-                        .average()
-                        .orElse(NO_PARTICIPANT);
+                        .average();
+                if (average.isEmpty()) {
+                    return null;
+                }
+                return (int) average.getAsDouble();
             }
         }
 
@@ -58,7 +60,7 @@ public class PredictableCodeTest {
 
         final var averagePosition = racingGame.averagePosition();
 
-        assertThat(averagePosition).isEqualTo(RacingGame.NO_PARTICIPANT);
+        assertThat(averagePosition).isNull();
     }
 
     /**
@@ -82,16 +84,16 @@ public class PredictableCodeTest {
                 this.participants = participants;
             }
 
-            Integer averagePosition() {
+            Optional<Integer> averagePosition() {
                 final OptionalDouble average = participants.stream()
                         .mapToInt(Car::position)
                         .average();
 
                 if (average.isEmpty()) {
                     // Note: null은 버그를 유발할 수 있다.
-                    return null;
+                    return Optional.empty();
                 }
-                return (int) average.getAsDouble();
+                return Optional.of((int) average.getAsDouble());
             }
         }
 
@@ -99,7 +101,7 @@ public class PredictableCodeTest {
 
         final var averagePosition = racingGame.averagePosition();
 
-        assertThat(averagePosition).isNull();
+        assertThat(averagePosition).isEmpty();
     }
 
     /**
@@ -125,23 +127,21 @@ public class PredictableCodeTest {
             }
 
             // Note: Optional를 사용하면 외부에 처리를 위임하게 되고, 응집도가 떨어질 수 있다.
-            Optional<Integer> averagePosition() {
+            Integer averagePosition() {
                 final OptionalDouble average = participants.stream()
                         .mapToInt(Car::position)
                         .average();
 
                 if (average.isEmpty()) {
-                    return Optional.empty();
+                    throw new IllegalArgumentException("게임 참여자가 없습니다.");
                 }
-                return Optional.of((int) average.getAsDouble());
+                return (int) average.getAsDouble();
             }
         }
 
         final var racingGame = new RacingGame();
 
-        final var averagePosition = racingGame.averagePosition();
-
-        assertThat(averagePosition).isEmpty();
+        assertThrows(IllegalArgumentException.class, racingGame::averagePosition);
     }
 
     /**
@@ -179,9 +179,7 @@ public class PredictableCodeTest {
 
         final var racingGame = new RacingGame();
 
-        assertThatThrownBy(() -> {
-            racingGame.averagePosition();
-        }).isInstanceOf(IllegalStateException.class)
+        assertThatThrownBy(racingGame::averagePosition).isInstanceOf(IllegalStateException.class)
                 .hasMessage("게임 참여자가 없습니다.");
     }
 
@@ -197,20 +195,22 @@ public class PredictableCodeTest {
             private int position;
 
             // TODO: 자동차 이동과 조회를 같이 할 경우 어떠한 문제가 있을지 고민 후 개선해보세요.
-            int move(final int power) {
-                if (power <= 4) {
-                    return position;
+            // CQS
+            void move(final int power) {
+                if (power >= 4) {
+                    position++;
                 }
+            }
 
-                return ++position;
+            int currentPosition () {
+                return position;
             }
         }
 
         final var car = new Car();
+        car.move(5);
 
-        final var position = car.move(5);
-
-        assertThat(position).isEqualTo(1);
+        assertThat(car.currentPosition()).isEqualTo(1);
     }
 
     /**
@@ -234,7 +234,7 @@ public class PredictableCodeTest {
                     return;
                 }
                 if (position >= 5) {
-                    return;
+                    throw new IllegalStateException("더 이상 움직일 수 없습니다.");
                 }
 
                 position++;
@@ -247,9 +247,7 @@ public class PredictableCodeTest {
 
         final var car = new Car(5);
 
-        car.move(5);
-
-        assertThat(car.getPosition()).isEqualTo(5);
+        assertThrows(IllegalStateException.class, () -> car.move(5));
     }
 
     /**
@@ -271,7 +269,7 @@ public class PredictableCodeTest {
             void move(final int power) {
                 // TODO: 파워가 4보다 작을 때 무시하는 코드는 어떠한 문제가 있을지 고민 후 개선해보세요.
                 if (power <= 4) {
-                    return;
+                    throw new IllegalStateException("파워가 모자랍니다.");
                 }
                 if (position >= 5) {
                     // Note: 중요한 동작을 무시하는 것은 버그를 유발할 수 있다.
@@ -283,6 +281,11 @@ public class PredictableCodeTest {
         }
 
         final var car = new Car(5);
+
+        assertThatThrownBy(() -> {
+            car.move(3);
+        }).isInstanceOf(IllegalStateException.class)
+                .hasMessage("파워가 모자랍니다.");
 
         assertThatThrownBy(() -> {
             car.move(5);
@@ -352,6 +355,9 @@ public class PredictableCodeTest {
                 if (command == Command.MINUS) {
                     return left - right;
                 }
+                if (command == Command.MULTIPLY) {
+                    return left * right;
+                }
                 // Note: MULTIPLY 명령이 추가되었지만 해당 명령을 처리하는 코드를 놓쳤습니다.
 
                 throw new UnsupportedOperationException("지원하지 않는 명령입니다.");
@@ -362,7 +368,8 @@ public class PredictableCodeTest {
 
         assertAll(
                 () -> assertThat(Calculator.calculate(Command.PLUS, 1, 2)).isEqualTo(3),
-                () -> assertThat(Calculator.calculate(Command.MINUS, 1, 2)).isEqualTo(-1)
+                () -> assertThat(Calculator.calculate(Command.MINUS, 1, 2)).isEqualTo(-1),
+                () -> assertThat(Calculator.calculate(Command.MULTIPLY, 1, 2)).isEqualTo(2)
         );
     }
 
